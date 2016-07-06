@@ -52,6 +52,13 @@ gj.grid.configuration = {
           *         columns: [ { field: "Name" }, { field: "PlaceOfBirth" } ]
           *     });
           * </script>
+
+               * </script>
+		  *  grid = $("#grid").grid({
+			  *  datasource:  { url: "Home/ReadingList", sendRequest:  this.options.sendRequest, success: onSuccessFunc },
+		  *         columns: [ { field: "Name" }, { field: "PlaceOfBirth" } ]
+          *     });
+
           * @example <table id="grid"></table>
           * <script>
           *     var data = [
@@ -818,7 +825,7 @@ gj.grid.configuration = {
          *     });
          * </script>
          */
-        $grid.trigger("rowSelect", [$row, id, record]); // does/can this be tied into Json object for selected id?
+        $grid.trigger("rowSelect", [$row, id, record]); // does/can this be tied into Json object for selected id? TVO
     },
     rowUnselect: function ($grid, $row, id, record) {
 
@@ -887,6 +894,7 @@ gj.grid.configuration = {
         }
         return this;
     },
+    // SetOptions may be access point for the parent widget, where it can pass in dataManager options like sendRequest TVO 7/1/2016
 
     SetOptions: function ($grid, jsConfiguration) {
         var options, htmlConfiguration;
@@ -1030,7 +1038,7 @@ gj.grid.configuration = {
     StartLoading: function ($grid) {
         var $tbody, $cover, $loading, width, height, top, data;
         gj.grid.private.StopLoading($grid);
-        data = $grid.data('grid');
+        data = $grid.data('grid'); // is this where the ajax method needs to be inserted??? TVO 
         if (0 === $grid.outerHeight()) {
             return;
         }
@@ -1741,8 +1749,10 @@ gj.grid.public = {
                 this.xhr.abort();
             }
             this.xhr = $.ajax(ajaxOptions);
-        } else if (typeof(data.dataSource) === "object") {// here is where ajax options and datasource come into play TVO 7/5/2016
-            if (!data.dataSource.data) {
+        } else if (typeof (data.dataSource) === "object") {// here is where ajax options and datasource come into play TVO 7/5/2016
+                         
+
+            if (!data.dataSource.data) { // data-manager widget would be implemented here TVO 6/28/2016
                 data.dataSource.data = {};
             }
             $.extend(data.dataSource.data, data.params);
