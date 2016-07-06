@@ -29,7 +29,13 @@ End Section
     @*<script src="~/Scripts/tether/tether.min.js" type="text/javascript"></script>*@
     <script src="~/Scripts/jquery-2.2.3.min.js" type="text/javascript"></script>
     <script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
-    <script src="~/Scripts/grid-0.4.3.js" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/iiisweb.utils.js")"></script>
+    <script src="@Url.Content("~/Scripts/iiisweb.events.js")"></script>
+    <script src="@Url.Content("~/Scripts/iiisweb.pubsub.js")"></script>
+    <script src="@Url.Content("~/Scripts/iiisweb.data.js")"></script>
+    <script src="~/Scripts/grid_tvo-0.0.1.js"></script>
+    <script src="~/Scripts/iiisweb/underclearance.js"></script>
+    @*<script src="~/Scripts/grid-0.4.3.js" type="text/javascript"></script>*@
    
     <script type="text/javascript">
         var grid;
