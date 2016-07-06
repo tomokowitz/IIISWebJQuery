@@ -1,0 +1,565 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+IIISWeb-jQueryGrid
+</name>
+</assembly>
+<members>
+<member name="M:IIISWeb_jQueryGrid.Controllers.HomeController.Save(IIISWeb_jQueryGrid.Models.ReadingModel)">
+ <summary>
+ 
+ </summary>
+ <param name="Reading"></param>
+ <returns></returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.Controllers.ReadingController.Save(IIISWeb_jQueryGrid.Models.ReadingModel)">
+ <summary>
+ 
+ </summary>
+ <param name="Reading"></param>
+ <returns></returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.DBFunctionality.CallDB(System.String,System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="View"></param>
+ <param name="Year"></param>
+ <param name="SortDir"></param>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.DBFunctionality.CxStringBuilder(System.String,System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strDSrc"></param>
+ <param name="strUId"></param>
+ <param name="strPwd"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.DBFunctionality.CxBuilder(System.String,System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strDSrc"></param>
+ <param name="strUId"></param>
+ <param name="strPwd"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.DBFunctionality.NullHandlerSQLStringBuilder(System.String,System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.List{System.String})">
+ <summary>
+ 
+ </summary>
+ <param name="tblName"></param>
+ <param name="items"></param>
+ <param name="qualifiers"></param>
+ <param name="sortItems"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.DBFunctionality.SQLStringBuilder(System.String,System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.List{System.String})">
+ <summary>
+ 
+ </summary>
+ <param name="tblName"></param>
+ <param name="items"></param>
+ <param name="qualifiers"></param>
+ <param name="sortItems"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.DBFunctionality.fnDataReader(Oracle.DataAccess.Client.OracleConnection,Oracle.DataAccess.Client.OracleCommand)">
+ <summary>
+ 
+ </summary>
+ <param name="cxBuilder"></param>
+ <param name="cmd"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.DBFunctionality.fnFilteredDataTable(System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="View"></param>
+ <param name="filter"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.DBFunctionality.fnDataTable(System.String,System.String,System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="View"></param>
+ <param name="DS"></param>
+ <param name="UID"></param>
+ <param name="PW"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.DBFunctionality.GetDataTable(System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="sql"></param>
+ <param name="cxStr"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.DBFunctionality.GetData(System.Object@,System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="dobj"></param>
+ <param name="sql"></param>
+ <param name="cxStr"></param>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.DBFunctionality.GetUpdateSQL(System.String,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String)">
+ <summary>Creates Oracle Update SQL string based on input values.</summary>
+ <param name="tblName">REQUIRED. Name of the table to Update.</param>
+ <param name="items">REQUIRED. Generic list of key-value pairs identifying columns and values to update.  
+ Can include parameters and functional manipulations (e.g., Upper()) as necessary.</param>
+ <param name="qualifiers">String that acts as the qualifier for the UPDATE statement, or Nothing if no qualifiers needed.  
+ Automatically adds the WHERE keyword if not included.</param>
+ <returns>Oracle Update SQL string.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.DBFunctionality.CreateIIISWebCommandObject">
+ <summary>
+ 
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="T:IIISWeb_jQueryGrid.OracleHelper">
+ <summary>
+ A helper class used to build and execute SQL against an Oracle database. REQUIRED: set the ConnectString property before executing SQL.
+ </summary>
+</member>
+<member name="T:IIISWeb_jQueryGrid.OracleHelper.SortDirection">
+ <summary>
+ Represents available sort types. Use string values, for example, to specify sort direction in SQL.
+ </summary>
+</member>
+<member name="T:IIISWeb_jQueryGrid.OracleHelper.DBType">
+ <summary>
+ Represents available data types for Oracle interaction. Use, for example, in specifying parameter types.
+ </summary>
+</member>
+<member name="T:IIISWeb_jQueryGrid.OracleHelper.Param">
+ <summary>Provides a parameter object for use in executing SQL with parameters. Wrapper saves caller having to reference Oracle.DataAccess</summary>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.Param.LoadSingleton(System.String,System.Object,System.Data.ParameterDirection)">
+ <summary>Creates a new input parameter for use in execution of SQL with this library.</summary>
+ <param name="name">Name of the parameter.</param>
+ <param name="value">Value for the parameter.</param>
+ <returns>Creates and loads new parameter instance.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.Param.Load``1(System.String,IIISWeb_jQueryGrid.OracleHelper.DBType,``0[])">
+ <summary>Creates a new input parameter for use in execution of SQL with this library.</summary>
+ <param name="name">Name of the parameter.</param>
+ <param name="type">Type (from enum) of the parameter.</param>
+ <param name="values">Array of values for the parameter.</param>
+ <returns>Creates and loads new parameter instance, defaulting to input direction.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.Param.Load``1(System.String,IIISWeb_jQueryGrid.OracleHelper.DBType,``0[],System.Data.ParameterDirection)">
+ <summary>Creates a new parameter for use in execution of SQL with this library.</summary>
+ <param name="name">Name of the parameter.</param>
+ <param name="type">Type (from enum) of the parameter.</param>
+ <param name="values">Array of values for the parameter.</param>
+ <param name="direction">Indicator for parameter direction (input/output)</param>
+ <returns>Creates and loads new parameter instance, defaulting to input direction.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.Param.GetValue">
+ <summary>Gets value of parameter object (for output parameters)</summary>
+ <returns>Value of parameter</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.GetKVP(System.String,System.String)">
+ <summary>Creates a new key-value pair with the indicated key and value.</summary>
+ <param name="key">A string with the key name.</param>
+ <param name="val">A string with the value.</param>
+ <returns>Input items combined into new key-value pair.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.GetNumberSQL(System.Object)">
+ <summary>Formats the input value as a string for inclusion in a SQL string.  Returns NULL for DBNull and non-numeric values.</summary>
+ <param name="val">A numeric object to be converted to a SQL string value.</param>
+ <returns>Input value as string, or NULL if input is DBNull or non-numeric.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.GetStringSQL(System.Object)">
+ <summary>Formats the input value as a string for inclusion in a SQL string, wrapping in single quotes and escaping existing single quotes.  
+ Returns NULL for DBNull and empty strings.</summary>
+ <param name="val">An object to be converted to a SQL string value.</param>
+ <returns>Input string enclosed in single quotes, with existing single quotes escaped, or NULL if input is DBNull or empty string.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.GetSelectSQL(System.String,System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.List{System.String})">
+ <summary>Creates Oracle Select SQL string based on input values.</summary>
+ <param name="tblName">REQUIRED. Name of the table to Select from.  Can be a full statement including JOINs if necessary.</param>
+ <param name="items">Generic list of string values identifying columns to Select.  Can include literals (properly escaped), 'As' clauses for naming, 
+ and other functional manipulations (e.g., Upper()) as necessary.  If nothing, defaults to wildcard (*).</param>
+ <param name="qualifiers">String that acts as the qualifier for the SELECT statement, or Nothing if no qualifiers needed.  
+ Automatically adds the WHERE keyword if not included.</param>
+ <param name="sortItems">Generic list of string values to use in an Order By statment, or Nothing if no sort needed.</param>
+ <returns>Oracle Select SQL string.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.GetDateSQL(System.Object)">
+ <summary>Formats the input value as a 'To_Date()' string for inclusion in a SQL string.  Returns NULL for DBNull and non-date values.</summary>
+ <param name="dt">A date object to be converted to a SQL string value.</param>
+ <returns>Input value as string, or NULL if input is DBNull or not a date.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.GetDateSQL(System.DateTime)">
+ <summary>Formats the input value as a 'To_Date()' string for inclusion in a SQL string.</summary>
+ <param name="dt">A date to be converted to a SQL string value.</param>
+ <returns>Input value as To_Date() string.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.GetDateTimeSQL(System.DateTime)">
+ <summary>Formats the input value as a 'To_Date()' string for inclusion in a SQL string.</summary>
+ <param name="dt">A datetime to be converted to a SQL string value.</param>
+ <returns>Input value as To_Date() string.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.GetInsertSQL(System.String,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+ <summary>Creates Oracle Insert SQL string based on input values.</summary>
+ <param name="tblName">REQUIRED. Name of the table to Insert into.</param>
+ <param name="items">REQUIRED. Generic list of key-value pairs identifying columns and data to insert. 
+ Can include parameters and functional manipulations (e.g., Upper()) as necessary.</param>
+ <returns>Oracle Insert SQL string.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.GetUpdateSQL(System.String,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String)">
+ <summary>Creates Oracle Update SQL string based on input values.</summary>
+ <param name="tblName">REQUIRED. Name of the table to Update.</param>
+ <param name="items">REQUIRED. Generic list of key-value pairs identifying columns and values to update.  
+ Can include parameters and functional manipulations (e.g., Upper()) as necessary.</param>
+ <param name="qualifiers">String that acts as the qualifier for the UPDATE statement, or Nothing if no qualifiers needed.  
+ Automatically adds the WHERE keyword if not included.</param>
+ <returns>Oracle Update SQL string.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.GetMergeSQL(System.String,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+ <summary>Creates Oracle Mere (Insert or Update) SQL string based on input values. 
+ NOTE: automatically appends suffix of _I and _U to insert and update parameters, respectively.</summary>
+ <param name="tblName">REQUIRED. Name of the table to Merge to.</param>
+ <param name="links">REQUIRED. Generic list of key-value pairs identifying qualifier columns and their values.
+ These values are used in the SQL to determine if the row already exists in the table. 
+ Can include parameters and functional manipulations (e.g., Upper()) as necessary.</param>
+ <param name="inserts">REQUIRED. Generic list of key-value pairs identifying columns and data to insert if row does not already exist. 
+ Can include parameters and functional manipulations (e.g., Upper()) as necessary.</param>
+ <param name="updates">REQUIRED. Generic list of key-value pairs identifying columns and values to update if the row already exists. 
+ Can include parameters and functional manipulations (e.g., Upper()) as necessary.</param>
+ <returns>Oracle Merge (Insert or Update) SQL string.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.NVL(System.Object)">
+ <summary>Filter for DBNull value, so DB values can be safely used in code.</summary>
+ <param name="val">Object representing value from the database.</param>
+ <returns>Input value or Nothing, if value is DBNull.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.NVL(System.Object,System.Object)">
+ <summary>Filter for DBNull value, so DB values can be safely used in code.</summary>
+ <param name="val">Object representing value from the database.</param>
+ <param name="defaultVal">Value to return if input value is DBNull</param>
+ <returns>Input value or defaultVal, if value is DBNull.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.NVL``1(System.Object)">
+ <summary>Filter for DBNull value, so DB values can be safely used in code.</summary>
+ <param name="val">Object representing value from the database, and indicated type.</param>
+ <returns>Input value or default value for type, if input value is DBNull.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.UnNVL(System.String)">
+ <summary>converts Nothing or an empty string to DBNull for posting to DB</summary>
+ <param name="val">Object representing value from the database.</param>
+ <returns>Input value or DBNull.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.UnNVLDate(System.String)">
+ <summary>converts Nothing or an empty string to DBNull for posting to DB, otherwise formats date to default DB string format</summary>
+ <param name="val">Object representing date value.</param>
+ <returns>Formatted input value or DBNull.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.#ctor(System.String)">
+ <summary>Instantiates OracleHlper library.</summary>
+ <param name="connectString">REQUIRED: specifies the connection string.</param>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.ExecuteInTransaction(System.String[])">
+ <summary>Executes multiple SQL statements in one session, with transaction wrapper to rollback in case of error.</summary>
+ <param name="sql">Array of SQL strings to execute.</param>
+ <returns>Array of integers representing result of ExecuteNonQuery calls for each input SQL (number of rows affected for each SQL).</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.ExecuteInTransaction(System.String[],IIISWeb_jQueryGrid.OracleHelper.Param[][],System.Int32[],System.Data.CommandType[])">
+ <summary>Executes multiple SQL statements in one session, with transaction wrapper to rollback in case of error.  Note that all input args must be parallel arrays.</summary>
+ <param name="sql">Array of SQL strings to execute.</param>
+ <param name="params">Jagged array of parameters to use in each SQL.  First dimension must be parallel to sql array.</param>
+ <param name="recordCount">Array of integers with number of records in parameter data.  Must be parallel to sql and params arrays.</param>
+ <param name="cmdType">Array of CommandTypes.  Must be parallel to sql array.</param>
+ <returns>Array of integers representing result of ExecuteNonQuery calls for each input SQL (number of rows affected for each SQL).</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.ExecuteNonQuery(System.String)">
+ <summary>Executes SQL statement.</summary>
+ <param name="sql">SQL string to execute.</param>
+ <returns>Integer representing result of ExecuteNonQuery (number of rows affected).</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.ExecuteNonQuery(System.String,IIISWeb_jQueryGrid.OracleHelper.Param[],System.Int32)">
+ <summary>Executes SQL statement with parameters.</summary>
+ <param name="sql">SQL string to execute.</param>
+ <param name="params">Array of Param structure object representing data parameters referenced in SQL, or Nothing.</param>
+ <param name="recordCount">Number of data items in each parameter, or 0 if no parameters.</param>
+ <returns>Integer representing result of ExecuteNonQuery (number of rows affected).</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.ExecuteNonQuery(System.String,IIISWeb_jQueryGrid.OracleHelper.Param[],System.Int32,System.Data.CommandType)">
+ <summary>Executes SQL proc/statement with parameters.</summary>
+ <param name="sql">SQL proc/string to execute.</param>
+ <param name="params">Array of Param structure object representing data parameters referenced in SQL, or Nothing.</param>
+ <param name="recordCount">Number of data items in each parameter, or 0 if no parameters.</param>
+ <param name="CmdType">CommandType of SQL.</param>
+ <returns>Integer representing result of ExecuteNonQuery (number of rows affected).</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.ExecuteScalar``1(System.String)">
+ <summary>Executes SQL query for fetching discrete data item and returns indicated data type.</summary>
+ <typeparam name="T">The type of the result</typeparam>
+ <param name="sql">SQL query to execute.</param>
+ <returns>Result of query cast to indicated type.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.ExecuteReader(System.String)">
+ <summary>Executes SQL query and returns data reader.</summary>
+ <param name="sql">SQL query to execute.</param>
+ <returns>Result of query as data reader.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.GetDataSet(System.String)">
+ <summary>Executes SQL query and returns data set.</summary>
+ <param name="sql">SQL query to execute.</param>
+ <returns>Result of query as data set.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.GetDataTable(System.String)">
+ <summary>Executes SQL query and returns data table.</summary>
+ <param name="sql">SQL query to execute.</param>
+ <returns>Result of query as data table.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.OracleHelper.GetDataView(System.String)">
+ <summary>Executes SQL query and returns data view.</summary>
+ <param name="sql">SQL query to execute.</param>
+ <returns>Result of query as data view.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.ReadingsData.dbOpenIIISConnection">
+ <summary>
+ 
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.ReadingsData.dbCloseConnection">
+ <summary>
+ 
+ </summary>
+</member>
+<member name="M:IIISWeb_jQueryGrid.ReadingsData.GetDateSQL(System.Object)">
+ <summary>Formats the input value as a 'To_Date()' string for inclusion in a SQL string.  Returns NULL for DBNull and non-date values.</summary>
+ <param name="dt">A date object to be converted to a SQL string value.</param>
+ <returns>Input value as string, or NULL if input is DBNull or not a date.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.ReadingsData.UnNVLDate(System.String)">
+ <summary>converts Nothing or an empty string to DBNull for posting to DB, otherwise formats date to default DB string format</summary>
+ <param name="val">Object representing date value.</param>
+ <returns>Formatted input value or DBNull.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.ReadingsData.NVL(System.Object)">
+ <summary>
+ 
+ </summary>
+ <param name="val"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.ReadingsData.NVL(System.Object,System.Object)">
+ <summary>Filter for DBNull value, so DB values can be safely used in code.</summary>
+ <param name="val">Object representing value from the database.</param>
+ <param name="defaultVal">Value to return if input value is DBNull</param>
+ <returns>Input value or defaultVal, if value is DBNull.</returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.ReadingsData.NVL``1(System.Object)">
+ <summary>Filter for DBNull value, so DB values can be safely used in code.</summary>
+ <param name="val">Object representing value from the database, and indicated type.</param>
+ <returns>Input value or default value for type, if input value is DBNull.</returns>
+</member>
+<member name="T:IIISWeb_jQueryGrid.ReadingsData.MyDB">
+ <summary>
+ 
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.ReadingsData.GetBrdgUCDT(System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strMP"></param>
+ <param name="strDivision"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.ReadingsData.GetBrdgUCSql(System.String,System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strMP"></param>
+ <param name="strSortStr"></param>
+ <param name="strDivision"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.ReadingsData.GetAllUCSql(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strSortStr"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.ReadingsData.GetFirstRecSql(System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strBT"></param>
+ <param name="strDivision"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.ReadingsData.GetMPRangeString(System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strMP"></param>
+ <param name="strDivision"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.ReadingsData.GetMPListForDivision(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strDivision"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.ReadingsData.GetDivisionForMP(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strMP"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.ReadingsData.GetDDLMilepostSql(System.String)">
+ <summary>
+ 
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.ReadingsData.GetUCDateDDLSql(System.String,System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strMP"></param>
+ <param name="strBrType"></param>
+ <param name="strFeature"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.ReadingsData.GetDDLFeatureSql(System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.Models.ReadingModel.GetAllReadings(System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.String,System.String,System.Int32@)">
+ <summary>
+ 
+ </summary>
+ <param name="page"></param>
+ <param name="limit"></param>
+ <param name="sortBy"></param>
+ <param name="direction"></param>
+ <param name="searchString"></param>
+ <returns></returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.Models.ReadingModel.ReadingsByMP(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strMP"></param>
+ <returns></returns>
+</member>
+<member name="M:IIISWeb_jQueryGrid.Models.ReadingModel.ReadingsByDivision(System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strBT"></param>
+ <param name="strDiv"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.Models.ReadingModel.ReadingByID(System.Int32)">
+ <summary>
+ 
+ </summary>
+ <param name="intID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.Models.ReadingModel.GetParamReadings(System.Data.IDbCommand@,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.String,System.String,System.Int32@)">
+ <summary>
+ 
+ </summary>
+ <param name="strSQL"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:IIISWeb_jQueryGrid.Models.ReadingModel.Save(IIISWeb_jQueryGrid.Models.ReadingModel)">
+ <summary>
+ 
+ </summary>
+ <param name="reading"></param>
+</member>
+<member name="M:IIISWeb_jQueryGrid.Models.ReadingModel.InsertUC(IIISWeb_jQueryGrid.Models.ReadingModel)">
+ <summary>
+ 
+ </summary>
+ <param name="reading"></param>
+ <returns></returns>
+</member>
+<member name="P:IIISWeb_jQueryGrid.Models.DivisionList.Divisions">
+ <summary> 
+ Dictionary holding the sample Makes values 
+ </summary> 
+</member>
+<member name="T:IIISWeb_jQueryGrid.My.MyWebExtension">
+ <summary>
+ Module used to define the properties that are available in the My Namespace for Web projects.
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:IIISWeb_jQueryGrid.My.MyWebExtension.Computer">
+ <summary>
+ Returns information about the host computer.
+ </summary>
+</member>
+<member name="P:IIISWeb_jQueryGrid.My.MyWebExtension.User">
+ <summary>
+ Returns information for the current Web user.
+ </summary>
+</member>
+<member name="P:IIISWeb_jQueryGrid.My.MyWebExtension.Request">
+ <summary>
+ Returns Request object.
+ </summary>
+</member>
+<member name="P:IIISWeb_jQueryGrid.My.MyWebExtension.Response">
+ <summary>
+ Returns Response object.
+ </summary>
+</member>
+<member name="P:IIISWeb_jQueryGrid.My.MyWebExtension.Log">
+ <summary>
+ Returns the Asp log object.
+ </summary>
+</member>
+</members>
+</doc>
