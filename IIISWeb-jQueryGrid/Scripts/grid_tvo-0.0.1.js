@@ -58,7 +58,10 @@ gj.grid.configuration = {
 			  *  datasource:  { url: "Home/ReadingList", sendRequest:  this.options.sendRequest, success: onSuccessFunc },
 		  *         columns: [ { field: "Name" }, { field: "PlaceOfBirth" } ]
           *     });
-
+           *  grid = $("#grid").grid({
+			  *  datasource:  { url: iiisweb.data.URL, sendRequest:  iiisweb.data.sendRequest, success: onSuccessFunc },
+		  *         columns: [ { field: "Name" }, { field: "PlaceOfBirth" } ]
+          *     });
           * @example <table id="grid"></table>
           * <script>
           *     var data = [
@@ -883,7 +886,7 @@ gj.grid.configuration = {
     init: function (jsConfiguration) {
         var options;
         if (!this.data('grid')) {
-            options = gj.grid.private.SetOptions(this, jsConfiguration || {});
+            options = gj.grid.private.SetOptions(this, jsConfiguration || {}); // could pass in dataManager here in jsConfiguration
             gj.grid.private.InitGrid(this);
             gj.grid.private.HeaderRenderer(this);
             gj.grid.private.AppendEmptyRow(this, "&nbsp;");
@@ -895,17 +898,20 @@ gj.grid.configuration = {
         return this;
     },
     // SetOptions may be access point for the parent widget, where it can pass in dataManager options like sendRequest TVO 7/1/2016
-
+      //*  grid = $("#grid").grid({
+	  //  	  *  datasource:  { url: iiisweb.data.URL, sendRequest:  iiisweb.data.sendRequest, success: onSuccessFunc },
+	  //    *         columns: [ { field: "Name" }, { field: "PlaceOfBirth" } ]
+      //    *     });
     SetOptions: function ($grid, jsConfiguration) {
         var options, htmlConfiguration;
-        options = $.extend(true, {}, gj.grid.configuration.base);
+        options = $.extend(true, {}, gj.grid.configuration.base); //need to add dataManager to base so it can be included in options?? dataSource is set in configuration.base
         if (jsConfiguration.uiLibrary && jsConfiguration.uiLibrary === "bootstrap") {
             $.extend(true, options, gj.grid.configuration.bootstrap);
         }
         htmlConfiguration = gj.grid.private.GetHTMLConfiguration($grid);
-        $.extend(true, options, htmlConfiguration);
-        $.extend(true, options, jsConfiguration);
-        $grid.data('grid', options);
+        $.extend(true, options, htmlConfiguration); // jQuery.extend( [deep ], target, object1 [, objectN ] ) ... deep:  recursive? target: The object to extend. It will receive the new properties; object1:  An object containing additional properties to merge in TVO
+        $.extend(true, options, jsConfiguration); // dataManager would be merged to grid object here
+        $grid.data('grid', options);  //.data( key, value ) ... 
         return options;
     },
 
@@ -1038,7 +1044,7 @@ gj.grid.configuration = {
     StartLoading: function ($grid) {
         var $tbody, $cover, $loading, width, height, top, data;
         gj.grid.private.StopLoading($grid);
-        data = $grid.data('grid'); // is this where the ajax method needs to be inserted??? TVO 
+        data = $grid.data('grid'); // is this where the ajax method needs to be inserted??? If dataManager was included in options, it has been merged into data in InitGrid TVO 
         if (0 === $grid.outerHeight()) {
             return;
         }
@@ -1092,7 +1098,7 @@ gj.grid.configuration = {
         $grid.append($row);
     },
 
-    LoadData: function ($grid, data, records) {
+    LoadData: function ($grid, data, records) { // is this where the ajax method needs to be inserted??? If dataManager was included in options, it has been merged into data in InitGrid TVO 
         var data, records, i, j, recLen, rowCount,
             $tbody, $rows, $row, $checkAllBoxes;
 
@@ -1734,7 +1740,7 @@ gj.grid.public = {
      *     });
      * </script>
      */
-    reload: function (params) {
+    reload: function (params) { // params are grid event info, not data
         var data, ajaxOptions, records;
         data = this.data('grid');
         $.extend(data.params, params);
@@ -1755,7 +1761,7 @@ gj.grid.public = {
             if (!data.dataSource.data) { // data-manager widget would be implemented here TVO 6/28/2016
                 data.dataSource.data = {};
             }
-            $.extend(data.dataSource.data, data.params);
+            $.extend(data.dataSource.data, data.params); // params have been merged into data.params TVO 7/6/2016
             ajaxOptions = $.extend(true, {}, data.dataSource); //clone dataSource object
             if (ajaxOptions.dataType === "json" && typeof (ajaxOptions.data) === "object") {
                 ajaxOptions.data = JSON.stringify(ajaxOptions.data);
@@ -2313,11 +2319,11 @@ gj.grid.public = {
         if (typeof method === 'object' || !method) {
             function Grid() {
                 var self = this;
-                $.extend(self, gj.grid.public);
+                $.extend(self, gj.grid.public); //jQuery.extend( target [, object1 ] [, objectN ] ) target: The object to extend. It will receive the new properties; object1:  An object containing additional properties to merge in TVO
             };
             var grid = new Grid();
-            $.extend(this, grid);
-            return gj.grid.private.init.apply(this, arguments); // here, the arguments seem to be passed in as jsConfiguration, so ... where do arguments come from?
+            $.extend(this, grid);  //jQuery.extend( target [, object1 ] [, objectN ] ) Merge the contents of two or more objects together into the first object.
+            return gj.grid.private.init.apply(this, arguments); // here, the arguments seem to be passed in as jsConfiguration ... they come from client instantiating
         } else if (gj.grid.public[method]) {
             return gj.grid.public[method].apply(this, Array.prototype.slice.call(arguments, 1));
         } else {

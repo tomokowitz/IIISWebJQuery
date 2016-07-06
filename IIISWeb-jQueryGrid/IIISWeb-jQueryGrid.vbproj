@@ -141,9 +141,9 @@
     <Content Include="Scripts\grid_tvo-0.0.1.js" />
     <Content Include="Scripts\iiisweb\iiisweb.data.js" />
     <Content Include="Scripts\iiisweb\iiisweb.events.js" />
-    <Content Include="Scripts\iiisweb\iiisweb.grid_widget.js" />
+    <Content Include="Scripts\iiisweb\iiisweb.uc_grid.js" />
     <Content Include="Scripts\iiisweb\iiisweb.pubsub.js" />
-    <Content Include="Scripts\iiisweb\iiisweb.underclearance.js" />
+    <Content Include="Scripts\iiisweb\underclearance.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\iiisweb\iiisweb.utils.js" />
     <Content Include="Scripts\iiisweb\iiisweb.validation.js" />

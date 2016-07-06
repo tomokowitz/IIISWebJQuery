@@ -4,7 +4,7 @@ plusplus: true, bitwise: true, devel: true, maxerr: 50 */
 /*global window: true, jQuery:true, $:true, document:true, mstats:true */
 
 (function (iiisweb, $) {
-    $.widget('iiisweb.underclearance', {
+    $.widget('iiisweb.uc_grid', {
         // default options
         options: {
             // Default to $.ajax when sendRequest is undefined.
@@ -32,7 +32,7 @@ plusplus: true, bitwise: true, devel: true, maxerr: 50 */
         _setupGridWidget: function () {
             var elem = this.element.find('#readings-grid-table');
 
-            grid = $("#grid").grid({
+            grid = $("#grid").grid({//arguments seem to be passed in as jsConfiguration, so a dataManager object and/or sendRequest argument could be added in as well?
                 dataKey: "INSP_ID",
                 uiLibrary: "bootstrap",
                 columns: [
