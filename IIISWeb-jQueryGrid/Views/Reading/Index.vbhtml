@@ -1,7 +1,7 @@
 ﻿@ModelType IIISWeb_jQueryGrid.Models.ReadingModel
 @Code
     ViewData("Title") = "Index"
-    Layout = "~/Views/Shared/_Layout.vbhtml"
+
 End Code
 
 @section Scripts
@@ -95,20 +95,20 @@ End Section
         //    });
         //}
         $(document).ready(function () {
-            grid = $("#grid").grid({
-                dataKey: "INSP_ID",
-                uiLibrary: "bootstrap",
-                columns: [
-                    { field: "Milepost", width: 100, sortable: true },
-                    { field: "INSP_ID", sortable: true },
-                    { field: "UC_Read_Date", title: "Reading Date", sortable: true },
-                    { field: "Inspect_Date", title: "Inspection Date", sortable: true }
-                    //,
-                    //{ title: "", field: "Edit", width: 34, type: "icon", icon: "glyphicon-pencil", tooltip: "Edit", events: { "click": Edit } },
-                    //{ title: "", field: "Delete", width: 34, type: "icon", icon: "glyphicon-remove", tooltip: "Delete", events: { "click": Remove }  }
-                ],
-                pager: { enable: true, limit: 5, sizes: [2, 5, 10, 20] }
-            });
+            //grid = $("#grid").grid({
+            //    dataKey: "INSP_ID",
+            //    uiLibrary: "bootstrap",
+            //    columns: [
+            //        { field: "Milepost", width: 100, sortable: true },
+            //        { field: "INSP_ID", sortable: true },
+            //        { field: "UC_Read_Date", title: "Reading Date", sortable: true },
+            //        { field: "Inspect_Date", title: "Inspection Date", sortable: true }
+            //        //,
+            //        //{ title: "", field: "Edit", width: 34, type: "icon", icon: "glyphicon-pencil", tooltip: "Edit", events: { "click": Edit } },
+            //        //{ title: "", field: "Delete", width: 34, type: "icon", icon: "glyphicon-remove", tooltip: "Delete", events: { "click": Remove }  }
+            //    ],
+            //    pager: { enable: true, limit: 5, sizes: [2, 5, 10, 20] }
+            //});
             // need to populate dropdowns here???
 
 
@@ -169,12 +169,12 @@ End Section
         <div class="row">
             <div class="col-md-3">
 
-                <select id="division" class="size-200">
+                @*<select id="division" class="size-200">
                     <option value="-1">Please select a division</option>
                     @For Each division As KeyValuePair(Of String, String) In Model.Divisions
                         @<option value="@division.Key">@division.Value</option>
                     Next
-                </select>
+                </select>*@
 
             </div>
         </div>
@@ -192,7 +192,7 @@ End Section
             </div>
         </div>
         <br />
-        <table id="grid" data-source="@Url.Action("ReadingList", "Reading")"></table>
+        <table id="grid" data-source="@Url.Action("Index", "Reading")"></table>
     </div>
 
             <!-- Modal -->

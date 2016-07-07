@@ -38,7 +38,7 @@ $(function () {
 
 	//header = $('#header').header();
 
-	iiisweb.pinnedSite.intializeData(iiisweb.dataManager.sendRequest);
+	//iiisweb.pinnedSite.intializeData(iiisweb.dataManager.sendRequest);
 
 	//if (!window.location.pathname.match(/Dashboard/)) {
 	//	return; // only enable widgets on the dashboard
@@ -74,7 +74,8 @@ $(function () {
 	//	publish: mstats.pubsub.publish,
 	//	header: header
 	//});
-
+	var elem = this.element.find('#grid');
+    
 	grid = $("#grid").grid({//arguments seem to be passed in as jsConfiguration, so a dataManager object and/or sendRequest argument could be added in as well?
 	    dataKey: "INSP_ID",
 	    uiLibrary: "bootstrap",
@@ -87,7 +88,9 @@ $(function () {
             //{ title: "", field: "Edit", width: 34, type: "icon", icon: "glyphicon-pencil", tooltip: "Edit", events: { "click": Edit } },
             //{ title: "", field: "Delete", width: 34, type: "icon", icon: "glyphicon-remove", tooltip: "Delete", events: { "click": Remove }  }
 	    ],
-        dataSource: iiisweb.dataManager.sendRequest,
+	    //dataSource: iiisweb.dataManager.sendRequest,
+	    //dataSource: { url: iiisweb.data.url, sendRequest: iiisweb.data.sendRequest, success: onSuccessFunc },
+	    dataSource: { url: elem.data('source'), sendRequest: iiisweb.data.sendRequest, success: onSuccessFunc },
 	    invalidateData: iiisweb.dataManager.resetData,
 	    publish: iiisweb.pubsub.publish,
 	    pager: {
@@ -106,11 +109,11 @@ $(function () {
 	//	invalidateData: mstats.dataManager.resetData
 	//});
 
-	$('body').layoutManager({
-		subscribe: iiisweb.pubsub.subscribe,
-		pinnedSite: iiisweb.pinnedSite,
-		summaryPane: summaryPane,
-		readingList: readingList,
-		readingGrid: readingGrid
-	});
+	//$('body').layoutManager({
+	//	subscribe: iiisweb.pubsub.subscribe,
+	//	pinnedSite: iiisweb.pinnedSite,
+	//	summaryPane: summaryPane,
+	//	readingList: readingList,
+	//	readingGrid: readingGrid
+	//});
 });

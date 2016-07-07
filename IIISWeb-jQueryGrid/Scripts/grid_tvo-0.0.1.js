@@ -60,7 +60,7 @@ gj.grid.configuration = {
           *     });
            *  grid = $("#grid").grid({
 			  *  datasource:  { url: iiisweb.data.URL, sendRequest:  iiisweb.data.sendRequest, success: onSuccessFunc },
-		  *         columns: [ { field: "Name" }, { field: "PlaceOfBirth" } ]
+		  *         columns: [ { field: "Milepost" }, { field: "INSP_ID" }, { field: "UC_Read_Date" }, { field: "Inspect_Date" } ]
           *     });
           * @example <table id="grid"></table>
           * <script>

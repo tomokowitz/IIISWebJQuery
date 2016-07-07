@@ -11,7 +11,7 @@ Public Module RouteConfig
 
         routes.MapRoute(
                 "JsonListRoute", ' Route name
-                "Reading/List", ' URL with parameters
+                "Reading/ReadingList", ' URL with parameters
                 New With {.controller = "Reading", .action = "ReadingList"} ' Parameter defaults
                 )
         routes.MapRoute(

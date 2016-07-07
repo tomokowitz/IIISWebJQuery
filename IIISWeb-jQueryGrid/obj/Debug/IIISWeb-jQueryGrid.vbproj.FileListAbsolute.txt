@@ -35,3 +35,24 @@ D:\Users\okowitz\Documents\Visual Studio 2015\Projects\IIISWeb_jQueryGrid\IIISWe
 D:\Users\okowitz\Documents\Visual Studio 2015\Projects\IIISWeb_jQueryGrid\IIISWeb-jQueryGrid\IIISWeb-jQueryGrid\obj\Debug\IIISWeb-jQueryGrid.dll
 D:\Users\okowitz\Documents\Visual Studio 2015\Projects\IIISWeb_jQueryGrid\IIISWeb-jQueryGrid\IIISWeb-jQueryGrid\obj\Debug\IIISWeb-jQueryGrid.xml
 D:\Users\okowitz\Documents\Visual Studio 2015\Projects\IIISWeb_jQueryGrid\IIISWeb-jQueryGrid\IIISWeb-jQueryGrid\obj\Debug\IIISWeb-jQueryGrid.pdb
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\bin\roslyn\csc.exe
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\bin\roslyn\System.Collections.Immutable.dll
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\bin\roslyn\System.Reflection.Metadata.dll
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\bin\roslyn\vbc.exe
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\bin\roslyn\VBCSCompiler.exe
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\bin\roslyn\VBCSCompiler.exe.config
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\bin\IIISWeb-jQueryGrid.dll.config
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\bin\IIISWeb-jQueryGrid.dll
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\bin\IIISWeb-jQueryGrid.pdb
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\bin\IIISWeb-jQueryGrid.xml
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\obj\Debug\IIISWeb_jQueryGrid.Resources.resources
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\obj\Debug\IIISWeb-jQueryGrid.vbproj.GenerateResource.Cache
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\obj\Debug\IIISWeb-jQueryGrid.dll
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\obj\Debug\IIISWeb-jQueryGrid.xml
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\obj\Debug\IIISWeb-jQueryGrid.pdb

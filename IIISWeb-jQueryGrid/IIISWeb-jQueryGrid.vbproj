@@ -115,6 +115,34 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\IIISWeb-jQueryGrid.dll" />
+    <Content Include="bin\IIISWeb-jQueryGrid.pdb" />
+    <Content Include="bin\IIISWeb-jQueryGrid.xml" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Oracle.DataAccess.dll" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.Webpages.Deployment.dll" />
+    <Content Include="bin\System.Web.Webpages.Deployment.xml" />
+    <Content Include="bin\System.Web.Webpages.dll" />
+    <Content Include="bin\System.Web.Webpages.Razor.dll" />
+    <Content Include="bin\System.Web.Webpages.Razor.xml" />
+    <Content Include="bin\System.Web.Webpages.xml" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -137,6 +165,11 @@
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="obj\Debug\IIISWeb-jQueryGrid.dll" />
+    <Content Include="obj\Debug\IIISWeb-jQueryGrid.pdb" />
+    <Content Include="obj\Debug\IIISWeb-jQueryGrid.vbproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\IIISWeb-jQueryGrid.xml" />
+    <Content Include="obj\Debug\TempPE\My Project.Resources.Designer.vb.dll" />
     <Content Include="Scripts\CascadingDropDownSample.js" />
     <Content Include="Scripts\grid_tvo-0.0.1.js" />
     <Content Include="Scripts\iiisweb\iiisweb.data.js" />
@@ -144,6 +177,15 @@
     <Content Include="Scripts\iiisweb\iiisweb.uc_grid.js" />
     <Content Include="Scripts\iiisweb\iiisweb.pubsub.js" />
     <Content Include="Scripts\iiisweb\underclearance.js" />
+    <Content Include="bin\IIISWeb-jQueryGrid.dll.config" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="obj\Debug\build.force" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\IIISWeb-jQueryGrid.vbproj.GenerateResource.Cache" />
+    <Content Include="obj\Debug\IIISWeb-jQueryGrid.vbprojResolveAssemblyReference.cache" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\iiisweb\iiisweb.utils.js" />
     <Content Include="Scripts\iiisweb\iiisweb.validation.js" />
@@ -216,6 +258,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\IIISWeb_jQueryGrid.Resources.resources" />
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -229,10 +272,7 @@
     </None>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="Views\Home\Index.vbhtml" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />
-    <Content Include="Views\_ViewStart.vbhtml" />
-    <Content Include="Views\Shared\_Layout.vbhtml" />
     <Content Include="Views\Reading\Index.vbhtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -243,6 +283,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
