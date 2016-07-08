@@ -18,23 +18,23 @@
 plusplus: true, bitwise: true, devel: true, maxerr: 50 */
 /*global window: true, jQuery:true, $:true, document:true, mstats:true */
 
-$(function () {
-	var grid;
+//$(function () {
+//	var grid;
 
-	// setup default error handler for redirects due to session timeout.
-	$(document).ajaxError(function (ev, jqXHR, settings, errorThrown) {
-		if (jqXHR.status === 200) {
-			if (jqXHR.responseText.indexOf('Mileage Stats Sign In') !== -1) {
-				window.location.replace(mstats.getRelativeEndpointUrl('/Auth/SignIn'));
-			} else if (jqXHR.responseText.indexOf('Mileage Stats | Accident!') !== -1) {
-				window.location.replace(mstats.getRelativeEndpointUrl('/GenericError.htm'));
-			}
-		}
-	});
+//	// setup default error handler for redirects due to session timeout.
+//	$(document).ajaxError(function (ev, jqXHR, settings, errorThrown) {
+//		if (jqXHR.status === 200) {
+//			if (jqXHR.responseText.indexOf('Mileage Stats Sign In') !== -1) {
+//				window.location.replace(mstats.getRelativeEndpointUrl('/Auth/SignIn'));
+//			} else if (jqXHR.responseText.indexOf('Mileage Stats | Accident!') !== -1) {
+//				window.location.replace(mstats.getRelativeEndpointUrl('/GenericError.htm'));
+//			}
+//		}
+//	});
 
-	$('#notification').status({
-		subscribe: iiisweb.pubsub.subscribe
-	});
+	//$('#notification').status({
+	//	subscribe: iiisweb.pubsub.subscribe
+	//});
 
 	//header = $('#header').header();
 
@@ -74,12 +74,29 @@ $(function () {
 	//	publish: mstats.pubsub.publish,
 	//	header: header
 	//});
-	var elem = this.element.find('#grid');
+	//var elem = this.element.find("grid");
+//	var elem = $(this).attr("#grid");
+
+$(function () {
+    $(document).ajaxError(function (ev, jqXHR, settings, errorThrown) {
+        		if (jqXHR.status === 200) {
+        			if (jqXHR.responseText.indexOf('Mileage Stats Sign In') !== -1) {
+        				window.location.replace(iiisweb.getRelativeEndpointUrl('/Auth/SignIn'));
+        			} else if (jqXHR.responseText.indexOf('Mileage Stats | Accident!') !== -1) {
+        				window.location.replace(iiisweb.getRelativeEndpointUrl('/GenericError.htm'));
+        			}
+        		}
+        	});
     
-	grid = $("#grid").grid({//arguments seem to be passed in as jsConfiguration, so a dataManager object and/or sendRequest argument could be added in as well?
-	    dataKey: "INSP_ID",
-	    uiLibrary: "bootstrap",
-	    columns: [
+    var elem = $(this).attr('#grid');
+    var grid, onSuccessFunc = function (response) {  // grid is starting to render since adding this TVO
+        alert("The result contains " + response.records.length + " records."); // error in response.records ... response only has mapping fields as properties
+        grid.render(response);
+    };
+    grid = $('#grid').grid({            //arguments seem to be passed in as jsConfiguration, so a dataManager object and/or sendRequest argument could be added in as well?
+        dataKey: "INSP_ID",
+        uiLibrary: "bootstrap",
+        columns: [
             { field: "Milepost", width: 100, sortable: true },
             { field: "INSP_ID", sortable: true },
             { field: "UC_Read_Date", title: "Reading Date", sortable: true },
@@ -87,17 +104,17 @@ $(function () {
             //,
             //{ title: "", field: "Edit", width: 34, type: "icon", icon: "glyphicon-pencil", tooltip: "Edit", events: { "click": Edit } },
             //{ title: "", field: "Delete", width: 34, type: "icon", icon: "glyphicon-remove", tooltip: "Delete", events: { "click": Remove }  }
-	    ],
-	    //dataSource: iiisweb.dataManager.sendRequest,
-	    //dataSource: { url: iiisweb.data.url, sendRequest: iiisweb.data.sendRequest, success: onSuccessFunc },
-	    dataSource: { url: elem.data('source'), sendRequest: iiisweb.data.sendRequest, success: onSuccessFunc },
-	    invalidateData: iiisweb.dataManager.resetData,
-	    publish: iiisweb.pubsub.publish,
-	    pager: {
-	        enable: true, limit: 5, sizes: [2, 5, 10, 20],
-	        
-	    }
-	});
+        ],
+        //dataSource: iiisweb.dataManager.sendRequest,
+        //dataSource: { url: iiisweb.data.url, sendRequest: iiisweb.data.sendRequest, success: onSuccessFunc },
+        dataSource: { url: '/Reading/ReadingList', data: {}, success: onSuccessFunc }, // ??? is onSuccessFunc missing?
+        //invalidateData: iiisweb.dataManager.resetData,
+        // publish: iiisweb.pubsub.publish,
+        pager: {
+            enable: true, limit: 5, sizes: [2, 5, 10, 20]
+        }
+    });
+    });
 	//readingGrid = $('#grid').readingGrid({          // to use this, must convert grid into widget
 	//    sendRequest: iiisweb.dataManager.sendRequest,
 	//    invalidateData: iiisweb.dataManager.resetData,
@@ -116,4 +133,4 @@ $(function () {
 	//	readingList: readingList,
 	//	readingGrid: readingGrid
 	//});
-});
+//});

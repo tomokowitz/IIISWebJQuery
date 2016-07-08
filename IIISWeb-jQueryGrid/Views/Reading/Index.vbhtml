@@ -1,12 +1,5 @@
-﻿@ModelType IIISWeb_jQueryGrid.Models.ReadingModel
-@Code
-    ViewData("Title") = "Index"
+﻿@Model@*Type IIISWeb_jQueryGrid.Models.ReadingModel*@
 
-End Code
-
-@section Scripts
-    <script src="~/Scripts/CascadingDropDownSample.js"></script>
-End Section
 
 <!DOCTYPE html>
 
@@ -29,12 +22,12 @@ End Section
     @*<script src="~/Scripts/tether/tether.min.js" type="text/javascript"></script>*@
     <script src="~/Scripts/jquery-2.2.3.min.js" type="text/javascript"></script>
     <script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/iiisweb.utils.js")"></script>
-    <script src="@Url.Content("~/Scripts/iiisweb.events.js")"></script>
-    <script src="@Url.Content("~/Scripts/iiisweb.pubsub.js")"></script>
-    <script src="@Url.Content("~/Scripts/iiisweb.data.js")"></script>
-    <script src="~/Scripts/grid_tvo-0.0.1.js"></script>
-    <script src="~/Scripts/iiisweb/underclearance.js"></script>
+    @*<script src="~/Scripts/iiisweb/iiisweb.utils.js" type="text/javascript"></script>
+    <script src="~/Scripts/iiisweb/iiisweb.events.js" type="text/javascript"></script>
+    <script src="~/Scripts/iiisweb/iiisweb.pubsub.js" type="text/javascript"></script>
+    <script src="~/Scripts/iiisweb/iiisweb.data.js" type="text/javascript"></script>
+    <script src="~/Scripts/grid_tvo-0.0.1.js" type="text/javascript"></script>*@
+    @*<script src="~/Scripts/iiisweb/underclearance.js" type="text/javascript"></script>*@
     @*<script src="~/Scripts/grid-0.4.3.js" type="text/javascript"></script>*@
    
     <script type="text/javascript">
@@ -94,32 +87,32 @@ End Section
         //        }
         //    });
         //}
-        $(document).ready(function () {
-            //grid = $("#grid").grid({
-            //    dataKey: "INSP_ID",
-            //    uiLibrary: "bootstrap",
-            //    columns: [
-            //        { field: "Milepost", width: 100, sortable: true },
-            //        { field: "INSP_ID", sortable: true },
-            //        { field: "UC_Read_Date", title: "Reading Date", sortable: true },
-            //        { field: "Inspect_Date", title: "Inspection Date", sortable: true }
-            //        //,
-            //        //{ title: "", field: "Edit", width: 34, type: "icon", icon: "glyphicon-pencil", tooltip: "Edit", events: { "click": Edit } },
-            //        //{ title: "", field: "Delete", width: 34, type: "icon", icon: "glyphicon-remove", tooltip: "Delete", events: { "click": Remove }  }
-            //    ],
-            //    pager: { enable: true, limit: 5, sizes: [2, 5, 10, 20] }
-            //});
-            // need to populate dropdowns here???
+        //$(document).ready(function () {
+        //    //grid = $("#grid").grid({
+        //    //    dataKey: "INSP_ID",
+        //    //    uiLibrary: "bootstrap",
+        //    //    columns: [
+        //    //        { field: "Milepost", width: 100, sortable: true },
+        //    //        { field: "INSP_ID", sortable: true },
+        //    //        { field: "UC_Read_Date", title: "Reading Date", sortable: true },
+        //    //        { field: "Inspect_Date", title: "Inspection Date", sortable: true }
+        //    //        //,
+        //    //        //{ title: "", field: "Edit", width: 34, type: "icon", icon: "glyphicon-pencil", tooltip: "Edit", events: { "click": Edit } },
+        //    //        //{ title: "", field: "Delete", width: 34, type: "icon", icon: "glyphicon-remove", tooltip: "Delete", events: { "click": Remove }  }
+        //    //    ],
+        //    //    pager: { enable: true, limit: 5, sizes: [2, 5, 10, 20] }
+        //    //});
+        //    // need to populate dropdowns here???
 
 
-            $("#btnAddReading").on("click", Add);
-            $("#btnSave").on("click", Save);
-            $("#btnSearch").on("click", Search);
-            // add dropdown and other grid events registration here???
-            //$("#gridDDLMP").on("change", MPSelect);
-            //$("#gridDDLDiv").on("change", DivSelect);
+        //    $("#btnAddReading").on("click", Add);
+        //    $("#btnSave").on("click", Save);
+        //    $("#btnSearch").on("click", Search);
+        //    // add dropdown and other grid events registration here???
+        //    //$("#gridDDLMP").on("change", MPSelect);
+        //    //$("#gridDDLDiv").on("change", DivSelect);
 
-        });
+        //});
 
         // dropdown event handler
         //$("#gridDDLDiv").on("change", function () {
@@ -159,7 +152,7 @@ End Section
         //    dropDownMonitor.initialize();
         //});
     </script>
-
+    @*<script src="~/Scripts/iiisweb/underclearance.js" type="text/javascript"></script>*@
 </head>
 <body>
 
@@ -192,9 +185,13 @@ End Section
             </div>
         </div>
         <br />
-        <table id="grid" data-source="@Url.Action("Index", "Reading")"></table>
+       
+        
     </div>
+    <div class="table" id="grid" data-source="@Url.Action("ReadingList", "Reading")">
+        <table id="grid"></table>
 
+    </div>
             <!-- Modal -->
             <div class="modal fade" id="readingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
                 <div class="modal-dialog">
@@ -227,5 +224,14 @@ End Section
                     </div>
                 </div>
             </div>
+
+    <script src="~/Scripts/jquery-2.2.3.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/iiisweb/iiisweb.utils.js" type="text/javascript"></script>
+    <script src="~/Scripts/iiisweb/iiisweb.events.js" type="text/javascript"></script>
+    <script src="~/Scripts/iiisweb/iiisweb.pubsub.js" type="text/javascript"></script>
+    <script src="~/Scripts/iiisweb/iiisweb.data.js" type="text/javascript"></script>
+    <script src="~/Scripts/grid_tvo-0.0.1.js" type="text/javascript"></script>
+    <script src="~/Scripts/iiisweb/underclearance.js" type="text/javascript"></script>
 </body>
 </html>
