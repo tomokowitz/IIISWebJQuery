@@ -1763,6 +1763,7 @@ gj.grid.public = {
             }
             $.extend(data.dataSource.data, data.params); // params have been merged into data.params TVO 7/6/2016
             ajaxOptions = $.extend(true, {}, data.dataSource); //clone dataSource object // this could be handled by dataManager sendRequest
+            //if (ajaxOptions.dataType === "json" && typeof (ajaxOptions.data) === "object") { // this could be handled by dataManager sendRequest
             if (ajaxOptions.dataType === "json" && typeof (ajaxOptions.data) === "object") { // this could be handled by dataManager sendRequest
                 ajaxOptions.data = JSON.stringify(ajaxOptions.data); // this could be handled by dataManager sendRequest
             }
@@ -1773,7 +1774,8 @@ gj.grid.public = {
             if (this.xhr) {
                 this.xhr.abort();
             }
-            this.xhr = $.ajax(ajaxOptions); // this could be handled by dataManager sendRequest (i.e. this.xhr = data.sendRequest or data.dataSource.sendReuest TVO
+            //this.xhr = $.ajax(ajaxOptions);
+            this.xhr = ajaxOptions.sendRequest; // this could be handled by dataManager sendRequest (i.e. this.xhr = data.sendRequest or data.dataSource.sendReuest TVO
         }
         return this;
     },

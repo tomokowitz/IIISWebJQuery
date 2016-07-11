@@ -88,11 +88,12 @@ $(function () {
         		}
         	});
     
-    var elem = $(this).attr('#grid');
-    var grid, onSuccessFunc = function (response) {  // grid is starting to render since adding this TVO
-        alert("The result contains " + response.records.length + " records."); // error in response.records ... response only has mapping fields as properties
-        grid.render(response);
-    };
+    var elem = $(this).find('grid');
+    var grid;
+    //var onSuccessFunc = function (response) {  // grid is starting to render since adding this TVO
+    //    alert("The result contains " + response.JsonTotal + " records."); // error in response.records ... response only has mapping fields as properties
+    //    grid.render(response);
+    //};
     grid = $('#grid').grid({            //arguments seem to be passed in as jsConfiguration, so a dataManager object and/or sendRequest argument could be added in as well?
         dataKey: "INSP_ID",
         uiLibrary: "bootstrap",
@@ -106,14 +107,20 @@ $(function () {
             //{ title: "", field: "Delete", width: 34, type: "icon", icon: "glyphicon-remove", tooltip: "Delete", events: { "click": Remove }  }
         ],
         //dataSource: iiisweb.dataManager.sendRequest,
+        dataSource: { url: elem.data('source'), sendRequest: iiisweb.dataManager.sendRequest, success: onSuccessFunc },
+        //dataSource: { url: elem.data('source'), sendRequest: iiisweb.dataManager.sendRequest, success: onSuccessFunc },
         //dataSource: { url: iiisweb.data.url, sendRequest: iiisweb.data.sendRequest, success: onSuccessFunc },
-        dataSource: { url: '/Reading/ReadingList', data: {}, success: onSuccessFunc }, // ??? is onSuccessFunc missing?
+        //dataSource: { url: '/Reading/ReadingList', data: {}, success: onSuccessFunc }, // ??? is onSuccessFunc missing?
         //invalidateData: iiisweb.dataManager.resetData,
         // publish: iiisweb.pubsub.publish,
         pager: {
             enable: true, limit: 5, sizes: [2, 5, 10, 20]
         }
     });
+    var onSuccessFunc = function (response) {  // grid is starting to render since adding this TVO
+        alert("The result contains " + response.JsonTotal + " records."); // error in response.records ... response only has mapping fields as properties
+        grid.render(response);
+    };
     });
 	//readingGrid = $('#grid').readingGrid({          // to use this, must convert grid into widget
 	//    sendRequest: iiisweb.dataManager.sendRequest,

@@ -31,6 +31,7 @@
                 $divSelect = $('#Year', $readingsForm),
                 $featSelect = $('#MakeName', $readingsForm),
                 $rDateSelect = $('#ModelName', $readingsForm),
+
                 makesUrl = $readingsForm.data('makes-url'),
                 modelsUrl = $readingsForm.data('models-url');
 

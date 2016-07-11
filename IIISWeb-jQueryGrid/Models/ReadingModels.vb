@@ -596,9 +596,11 @@ Namespace Models
             Dim rd As ReadingsData = New ReadingsData
 
             'page = 10
-            limit = 5
+            'limit = 5
 
             Try
+                cmd.Connection.Open()
+
                 Dim dr As IDataReader = cmd.ExecuteReader
                 Dim lstReadings As List(Of ReadingModel) = New List(Of ReadingModel)
                 Dim readings As IOrderedQueryable(Of ReadingModel)
@@ -607,7 +609,6 @@ Namespace Models
                     rd.Map(dr, reading)
                     lstReadings.Add(reading)
                 End While
-
 
                 readings = (From r In lstReadings
                             Select New ReadingModel() With {
@@ -632,7 +633,6 @@ Namespace Models
 
                         readings = SortHelper.OrderByDescending(Of ReadingModel)(readings, sortBy)
 
-
                     End If
                 End If
 
@@ -646,6 +646,8 @@ Namespace Models
             Catch ex As Exception
                 Utilities.WriteError(ex, "GetParamReadings")
 
+            Finally
+                cmd.Connection.Close()
             End Try
 
         End Function
