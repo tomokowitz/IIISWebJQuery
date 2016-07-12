@@ -57,3 +57,4 @@ D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\obj\Debug\III
 D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\obj\Debug\IIISWeb-jQueryGrid.xml
 D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\obj\Debug\IIISWeb-jQueryGrid.pdb
 D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\obj\Debug\IIISWeb-jQueryGrid.vbprojResolveAssemblyReference.cache
+D:\Users\okowitz\Documents\GitHub\IIISWebJQuery\IIISWeb-jQueryGrid\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml

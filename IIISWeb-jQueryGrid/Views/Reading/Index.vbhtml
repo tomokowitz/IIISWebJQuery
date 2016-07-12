@@ -20,13 +20,17 @@
     <link href="~/Content/grid-0.4.3.min.css" rel="stylesheet" type="text/css">
 
     @*<script src="~/Scripts/tether/tether.min.js" type="text/javascript"></script>*@
+
+    
     <script src="~/Scripts/jquery-2.2.3.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
     <script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
     <script src="~/Scripts/iiisweb/iiisweb.utils.js" type="text/javascript"></script>
     <script src="~/Scripts/iiisweb/iiisweb.events.js" type="text/javascript"></script>
     <script src="~/Scripts/iiisweb/iiisweb.pubsub.js" type="text/javascript"></script>
     <script src="~/Scripts/iiisweb/iiisweb.data.js" type="text/javascript"></script>
     <script src="~/Scripts/grid_tvo-0.0.1.js" type="text/javascript"></script>
+    <script src="~/Scripts/iiisweb/iiisweb.uc_grid.js" type="text/javascript"></script>
     <script src="~/Scripts/iiisweb/underclearance.js" type="text/javascript"></script>
     @*<script src="~/Scripts/grid-0.4.3.js" type="text/javascript"></script>*@
    
