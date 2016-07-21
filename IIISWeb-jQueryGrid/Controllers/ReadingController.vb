@@ -10,14 +10,14 @@ Namespace Controllers
         Function Index() As ActionResult
 
             Dim rm As ReadingModel = New ReadingModel()
-            rm.Divisions = GetDivisions()
+            'rm.Divisions = GetDivisions()
 
 
             Return View(rm)
         End Function
 
 
-        Private Function GetDivisions() As IDictionary(Of String, String)
+        Public Function GetDivisions() As JsonResult 'IDictionary(Of String, String)  
             Dim divs As IDictionary(Of String, String) = New Dictionary(Of String, String)()
 
             Dim cmdstr As String
@@ -46,6 +46,8 @@ Namespace Controllers
                     divs.Add(dr(0), dr(1))
                 End While
 
+                'Return divs
+                Return Json(divs, JsonRequestBehavior.AllowGet)
 
             Catch ex As Exception
                 strErrMsg = "Exception while acquiring data:  " + ex.Source + ex.Message
@@ -56,11 +58,17 @@ Namespace Controllers
                 rd.dbCloseConnection()
                 cmd.Dispose()
             End Try
+
             'makes.Add("1", "Acura")
             'makes.Add("2", "Audi")
             'makes.Add("3", "BMW")
 
-            Return divs
+
+
+
+
+
+
         End Function
 
 #Region "JSON endpoints"

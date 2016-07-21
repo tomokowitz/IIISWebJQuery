@@ -17,6 +17,7 @@
     <link href="~/Content/tether/tether.min.css" rel="stylesheet" type="text/css">*@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+    <link href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css">
     <link href="~/Content/grid-0.4.3.min.css" rel="stylesheet" type="text/css">
 
     @*<script src="~/Scripts/tether/tether.min.js" type="text/javascript"></script>*@
@@ -29,9 +30,11 @@
     <script src="~/Scripts/iiisweb/iiisweb.events.js" type="text/javascript"></script>
     <script src="~/Scripts/iiisweb/iiisweb.pubsub.js" type="text/javascript"></script>
     <script src="~/Scripts/iiisweb/iiisweb.data.js" type="text/javascript"></script>
-    <script src="~/Scripts/grid_tvo-0.0.1.js" type="text/javascript"></script>
-    <script src="~/Scripts/iiisweb/iiisweb.uc_grid.js" type="text/javascript"></script>
-    <script src="~/Scripts/iiisweb/underclearance.js" type="text/javascript"></script>
+    <script src="~/Scripts/iiisweb/iiisweb.uc-dropdown-monitor.js" type="text/javascript"></script>
+    <script src="~/Scripts/iiisweb/iiisweb.grid_tvo-0.0.1.js" type="text/javascript"></script>
+    @*<script src="~/Scripts/iiisweb/iiisweb.uc_grid.js" type="text/javascript"></script>*@
+    <script src="~/Scripts/iiisweb/iiisweb.underclearance.js" type="text/javascript"></script>
+    <script src="~/Scripts/iiisweb/iiisweb.js" type="text/javascript"></script>
     @*<script src="~/Scripts/grid-0.4.3.js" type="text/javascript"></script>*@
    
     <script type="text/javascript">
@@ -79,15 +82,63 @@
         function Search() {
             grid.reload({ searchString: $("#search").val() });
         }
+        function DivPop() {
 
+            var result;
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Reading/GetDivisions" ,
+                data: {},
+                dataType: "json",
+                success: function (response) {
+                    //Your code here
+                    //data should be your json result
+                    //result = response;
+                    $("#ddlDiv option").remove(); // Remove all <option> child tags.
+
+                    $.each(response, function (index, item) {
+                        $("#ddlDiv").append(
+                            $("<option></option>")
+                                .text(item)
+                                .val(index)
+                            );
+                    });
+                    alert("dropdown loaded successfully!!!");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+            });
+            //$("#ddlDiv option").remove(); // Remove all <option> child tags.
+
+            //$.each(data.divisions, function(index,item){
+            //    $("#ddlDiv").append(
+            //        $("<option></option>")
+            //            .text()
+            //            .val()
+            //        );
+            //});
+        
+        }
         //function DivSelect() {
+
+        //    var id = $(this).find(':selected')[0].id;
         //    $.ajax({
-        //        "url": "/Controller/Action/" + $("#division").val(),
-        //        "type": "get",
-        //        "dataType": "json",
-        //        "success": function (data) {
+        //        url: "/Reading/ReadingList",
+        //        type: "get",
+        //        contentType: "application/json; charset=utf-8",
+        //        dataType: "json",
+        //        success: function (response) {
         //            //Your code here
         //            //data should be your json result
+        //            grid.reload({ searchString: "DIVISION_DESC='" && id && "'" })
+        //            alert("dropdown selection change successful!!!");
+        //        },
+        //        error: function (xhr, ajaxOptions, thrownError) {
+        //            alert(xhr.status);
+        //            alert(thrownError);
         //        }
         //    });
         //}
@@ -107,15 +158,23 @@
         //    //    pager: { enable: true, limit: 5, sizes: [2, 5, 10, 20] }
         //    //});
         //    // need to populate dropdowns here???
-
-
+            DivPop();
+           
             $("#btnAddReading").on("click", Add);
             $("#btnSave").on("click", Save);
             $("#btnSearch").on("click", Search);
         //    // add dropdown and other grid events registration here???
         //    //$("#gridDDLMP").on("change", MPSelect);
-        //    //$("#gridDDLDiv").on("change", DivSelect);
+            //$("#ddlDiv").on("change", DivSelect);
 
+
+
+
+
+            $(function () {
+                var dropDownMonitor = new iiisweb.UCDropDownMonitor(iiisweb.pubsub.publish, iiisweb.dataManager.sendRequest);
+                dropDownMonitor.initialize();
+            });
         });
 
         // dropdown event handler
@@ -151,12 +210,9 @@
 
         //});
 
-        //$(function () {
-        //    var dropDownMonitor = new iiisweb.UCDropDownMonitor(iiisweb.pubsub.publish, iiisweb.dataManager.sendRequest);
-        //    dropDownMonitor.initialize();
-        //});
+       
     </script>
-    @*<script src="~/Scripts/iiisweb/underclearance.js" type="text/javascript"></script>*@
+
 </head>
 <body>
 
@@ -166,12 +222,22 @@
         <div class="row">
             <div class="col-md-3">
 
-                @*<select id="division" class="size-200">
-                    <option value="-1">Please select a division</option>
+                <select id="ddlDiv" class="size-200" data-url="/Reading/ReadingList">
+                    @*<option value="-1">Please select a division</option>
                     @For Each division As KeyValuePair(Of String, String) In Model.Divisions
                         @<option value="@division.Key">@division.Value</option>
-                    Next
-                </select>*@
+                    Next*@
+                </select>
+
+            </div>
+            <div class="col-md-3">
+
+                <select id="ddlFeats" class="size-200" data-url="/Reading/ReadingList">
+                    @*<option value="-1">Please select a division</option>
+                @For Each division As KeyValuePair(Of String, String) In Model.Divisions
+                    @<option value="@division.Key">@division.Value</option>
+                Next*@
+                </select>
 
             </div>
         </div>
@@ -189,10 +255,10 @@
             </div>
         </div>
         <br />
-       
+        <table id="grid" data-source="@Url.Action("ReadingList", "Reading")"></table>
         
     </div>
-    <table id="grid" data-source="@Url.Action("ReadingList", "Reading")"></table>
+    
     @*<div class="table" id="grid" data-source="@Url.Action("ReadingList", "Reading")">
         <table id="grid"></table>
 

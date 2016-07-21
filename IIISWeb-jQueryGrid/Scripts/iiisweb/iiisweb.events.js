@@ -18,11 +18,15 @@
 
     iiisweb.events = {
 
-        status: 'status',
+        //status: 'status',
 
-        readings:{
+        reading:{
             grid: {
                 selected:  'grid/selected'
+            },
+            ddlDiv: {
+                changed:  'ddlDiv/change'
+
             }
 
         }

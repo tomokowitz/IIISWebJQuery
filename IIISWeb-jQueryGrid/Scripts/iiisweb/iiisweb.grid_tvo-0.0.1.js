@@ -421,6 +421,7 @@ gj.grid.configuration = {
                 * @default "limit"
                 */
             limit: "limit"
+            /** Add default params for filter? TVO */
         },
         /** The name of the UI library that is going to be in use. 
             * Currently we support only jQuery UI and bootstrap. jQuery UI or Bootstrap should be manually included to the page where the grid is in use.
@@ -1764,7 +1765,7 @@ gj.grid.public = {
             $.extend(data.dataSource.data, data.params); // params have been merged into data.params TVO 7/6/2016
             ajaxOptions = $.extend(true, {}, data.dataSource); //clone dataSource object // this could be handled by dataManager sendRequest
             //if (ajaxOptions.dataType === "json" && typeof (ajaxOptions.data) === "object") { // this could be handled by dataManager sendRequest
-            if (ajaxOptions.dataType === "json" && typeof (ajaxOptions.data) === "object") { // this could be handled by dataManager sendRequest
+            if (data.dataType === "json" && typeof (ajaxOptions.data) === "object") { // this could be handled by dataManager sendRequest
                 ajaxOptions.data = JSON.stringify(ajaxOptions.data); // this could be handled by dataManager sendRequest
             }
             if (!ajaxOptions.success)
@@ -2317,8 +2318,8 @@ gj.grid.public = {
 };
 
 (function ($) {
-    $.fn.grid = function (method) {
-        if (typeof method === 'object' || !method) {
+    $.fn.grid = function (method) {// this is like a widget method; you can pass in a public method call as a parameter to the widget method
+        if (typeof method === 'object' || !method) { // this handles instantiation call
             function Grid() {
                 var self = this;
                 $.extend(self, gj.grid.public); //jQuery.extend( target [, object1 ] [, objectN ] ) target: The object to extend. It will receive the new properties; object1:  An object containing additional properties to merge in TVO

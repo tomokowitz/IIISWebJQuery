@@ -27,50 +27,50 @@
         var that = {};
 
         that.initialize = function () {
-            var $readingsForm = $('#container readings'),
-                $divSelect = $('#Year', $readingsForm),
-                $featSelect = $('#MakeName', $readingsForm),
-                $rDateSelect = $('#ModelName', $readingsForm),
+            var $readingForm = $('#container readings'),
+                $divSelect = $('#ddlDiv', $readingForm),
+                $featSelect = $('#ddlFeats', $readingForm),
+                $rDateSelect = $('#ddlRDate', $readingForm),
 
-                makesUrl = $readingsForm.data('makes-url'),
-                modelsUrl = $readingsForm.data('models-url');
+                divsUrl = $readingForm.data('divs-url'),
+                featsUrl = $readingForm.data('feats-url');
 
-            $readingsForm.find('input[name="UpdateMakes"]').remove()
-            .end()
-            .find('input[name="UpdateModels"]').remove();
+            //$readingsForm.find('input[name="UpdateMakes"]').remove()
+            //.end()
+            //.find('input[name="UpdateModels"]').remove();
 
-            $yearSelect.change(function () {
-                $makeSelect.children().not(':first').remove();
-                $modelSelect.children().not(':first').remove();
+            $divSelect.change(function () {
+                $divSelect.children().not(':first').remove();
+                //$modelSelect.children().not(':first').remove();
 
                 sendRequest({
-                    url: makesUrl,
-                    data: { year: $yearSelect.val() },
+                    url: divsUrl,
+                    data: { DIVISION_DESC: $divSelect.val() },
                     cache: false,
                     success: function (data) {
-                        that._updateList(data, $makeSelect);
+                        that._updateList(data, $divSelect);
                     },
                     error: function () {
-                        that._publishError('Could not load vehicle data lists.');
+                        that._publishError('Could not load division dropdown.');
                     }
                 });
             });
 
-            $makeSelect.change(function () {
-                $modelSelect.children().not(':first').remove();
+            //$makeSelect.change(function () {
+            //    $modelSelect.children().not(':first').remove();
 
-                sendRequest({
-                    url: modelsUrl,
-                    cache: false,
-                    data: { year: $yearSelect.val(), make: $makeSelect.val() },
-                    success: function (data) {
-                        that._updateList(data, $modelSelect);
-                    },
-                    error: function () {
-                        that._publishError('Could not load vehicle data lists.');
-                    }
-                });
-            });
+            //    sendRequest({
+            //        url: modelsUrl,
+            //        cache: false,
+            //        data: { year: $yearSelect.val(), make: $makeSelect.val() },
+            //        success: function (data) {
+            //            that._updateList(data, $modelSelect);
+            //        },
+            //        error: function () {
+            //            that._publishError('Could not load vehicle data lists.');
+            //        }
+            //    });
+            //});
         };
 
         that._updateList = function (data, $selectList) {
